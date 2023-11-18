@@ -1,0 +1,52 @@
+{
+    "id": "1234",
+    "name": "PMP Mock exam",
+    "short_description": "description of mock exam",
+    "description": "escaped rich text html string",
+    "metadata": {
+        "total_questions": 60,
+        "total_marks": 60,
+        "total_time": 3600
+    },
+    "instructions": {
+        "body": "escaped rich text html string"
+    },
+    "questions": [
+        {
+            "id": "1",
+            "text": "Who is the prime minister of India?",
+            "options": [
+                {
+                    "id": "option 1",
+                    "text": "Narendra Modi"
+                },
+                {
+                    "id": "option 2",
+                    "text": "Rahul Gandhi"
+                },
+                {
+                    "id": "option 3",
+                    "text": "Pankaj Udhas"
+                }
+            ]
+        },
+        {   
+            "id": "2",
+            "text": "Who is the prime minister of India?",
+            "options": [
+                {
+                    "id": "1",
+                    "text": "Narendra Modi"
+                },
+                {
+                    "id": "2",
+                    "text": "Rahul Gandhi"
+                },
+                {
+                    "id": "3",
+                    "text": "Pankaj Udhas"
+                }
+            ]
+        }
+    ]
+}
