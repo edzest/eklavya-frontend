@@ -13,7 +13,7 @@ export interface Test {
     }
     questions: [
         {
-            id: number
+            id: string
             text: string
             options: [
                 {
@@ -23,4 +23,9 @@ export interface Test {
             ]
         },
     ]
+}
+
+export interface StoredTest {
+    startTime?: number
+    test?: Test
 }

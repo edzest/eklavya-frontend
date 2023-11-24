@@ -1,24 +1,22 @@
 import Branding from '@/components/ui/branding'
-import { TypographyH2 } from '@/components/ui/h2-typography'
-import { TypographyP } from '@/components/ui/p-typography'
-import TestInstruction from '@/components/ui/test-instruction'
+import { Button } from '@/components/ui/button'
+import { TypographySmall } from '@/components/ui/small-typography'
 import TestTitle from '@/components/ui/test-title'
-import { getTestDescription } from '@/lib/test-service'
+import { getTest, getTestDescription } from '@/lib/test-service'
+import Link from 'next/link'
+import StartTest from '../start-test'
 
 export default async function Page({ params }: { params: { id: string } }) {
     const testDescription = await getTestDescription(params.id)
-    console.log(testDescription)
+    const test = await getTest(params.id)
     return (
-        <div>
+        <div className="min-h-[calc(100vh-2rem)] flex flex-col gap-3">
             <Branding></Branding>
-            <main className="flex flex-col">
-                <div>
+            <main className="flex justify-center grow">
+                <div className="flex flex-col justify-center gap-4 text-center">
                     <TestTitle id={params.id}></TestTitle>
-                    <TypographyP text={testDescription}></TypographyP>
-                </div>
-                <div>
-                    <TypographyH2 text="About This Test" />
-                    <TestInstruction id={params.id}></TestInstruction>
+                    <TypographySmall text={testDescription}></TypographySmall>
+                    <StartTest test={test}></StartTest>
                 </div>
             </main>
         </div>
