@@ -10,12 +10,12 @@ export default function StartTest({ test }: { test: Test }) {
     const router = useRouter()
 
     useEffect(() => {
-        initiateTestSession(test.id, { test })
+        initiateTestSession({ test })
     }, [test])
 
     const handleStartTest = () => {
-        startTestSession(test.id)
-        router.push(`/question/${test.questions[0].id}`)
+        startTestSession()
+        router.push(`${test.id}/question/${test.questions[0].id}`)
     }
 
     return <Button onClick={handleStartTest}>Start Test</Button>

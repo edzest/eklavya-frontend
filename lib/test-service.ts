@@ -22,18 +22,53 @@ export async function getTestDescription(id: string) {
     return test.shortDescription
 }
 
-export function initiateTestSession(id: string, test: StoredTest) {
-    sessionStorage.setItem(id, JSON.stringify(test))
+export async function getQuestion(testId: string, questionId: string) {
+    const test = await getTest(testId)
+    const foundQuestionIndex = test.questions.findIndex(
+        (question) => question.id === questionId
+    )
+    return {
+        question: test.questions[foundQuestionIndex],
+        nextQuestionId:
+            foundQuestionIndex < test.questions.length - 1
+                ? foundQuestionIndex + 1
+                : -1,
+    }
 }
 
-export function startTestSession(id: string) {
+export function initiateTestSession(test: StoredTest) {
+    sessionStorage.setItem('test', JSON.stringify(test))
+}
+
+export function startTestSession() {
     const storedTest = JSON.parse(
-        sessionStorage.getItem(id) ?? EMPTY_JSON
+        sessionStorage.getItem('test') ?? EMPTY_JSON
     ) as StoredTest
     if (!storedTest.test) {
         return false
     }
     storedTest.startTime = Date.now()
-    sessionStorage.setItem(id, JSON.stringify(storedTest))
+    sessionStorage.setItem('test', JSON.stringify(storedTest))
     return true
+}
+
+export function getTestTitleInSession() {
+    const storedTest = JSON.parse(
+        sessionStorage.getItem('test') ?? EMPTY_JSON
+    ) as StoredTest
+    return storedTest.test?.name
+}
+
+export function getSessionTestTime() {
+    const storedTest = JSON.parse(
+        sessionStorage.getItem('test') ?? EMPTY_JSON
+    ) as StoredTest
+    if (storedTest.startTime && storedTest.test?.metaData.totalTime) {
+        const finishTime =
+            storedTest.startTime + storedTest.test?.metaData.totalTime * 1000
+        return {
+            finishTime: finishTime,
+            startTime: storedTest.startTime,
+        }
+    }
 }
