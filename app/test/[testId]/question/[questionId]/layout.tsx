@@ -11,13 +11,13 @@ export default async function Layout({
     params: { testId: string; questionId: string }
 }) {
     return (
-        <section className="px-10">
+        <section className="px-10 flex flex-col min-h-screen">
             <header className="flex justify-between">
                 <TestTitle id={params.testId} size="MEDIUM"></TestTitle>
                 <Timer></Timer>
             </header>
             <hr className="mt-4"></hr>
-            <main>{children}</main>
+            <main className="grow mt-10">{children}</main>
         </section>
     )
 }

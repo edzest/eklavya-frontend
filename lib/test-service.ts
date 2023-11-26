@@ -31,8 +31,12 @@ export async function getQuestion(testId: string, questionId: string) {
         question: test.questions[foundQuestionIndex],
         nextQuestionId:
             foundQuestionIndex < test.questions.length - 1
-                ? foundQuestionIndex + 1
-                : -1,
+                ? test.questions[foundQuestionIndex + 1].id
+                : undefined,
+        previousQuestionId:
+            foundQuestionIndex === 0
+                ? undefined
+                : test.questions[foundQuestionIndex - 1].id,
     }
 }
 
