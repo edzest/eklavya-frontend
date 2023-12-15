@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     description: 'your friendly test platform',
 }
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
     subsets: ['latin'],
     variable: '--font-sans',
 })
