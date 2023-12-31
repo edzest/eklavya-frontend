@@ -2,7 +2,11 @@ import { StoredTest, Test } from './models'
 import { EMPTY_JSON } from './utils'
 
 export async function getTest(id: string) {
-    const response = await fetch(`${process.env.BASE_TEST_URL}/${id}`)
+    const response = await fetch(`${process.env.BASE_TEST_URL}/${id}`, {
+        headers: {
+            Authorization: `Bearer ${process.env.TEST_API_KEY}`,
+        },
+    })
     const test = (await response.json()) as Test
     return test
 }
@@ -67,9 +71,9 @@ export function getSessionTestTime() {
     const storedTest = JSON.parse(
         sessionStorage.getItem('test') ?? EMPTY_JSON
     ) as StoredTest
-    if (storedTest.startTime && storedTest.test?.metaData.totalTime) {
+    if (storedTest.startTime && storedTest.test?.metadata.totalTime) {
         const finishTime =
-            storedTest.startTime + storedTest.test?.metaData.totalTime * 1000
+            storedTest.startTime + storedTest.test?.metadata.totalTime * 1000
         return {
             finishTime: finishTime,
             startTime: storedTest.startTime,

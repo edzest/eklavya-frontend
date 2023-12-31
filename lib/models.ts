@@ -3,7 +3,7 @@ export interface Test {
     name: string
     shortDescription: string
     description: string
-    metaData: {
+    metadata: {
         totalQuestions: number
         totalMarks: number
         totalTime: number
