@@ -11,7 +11,7 @@ export default async function Layout({
     params: { testId: string; questionId: string }
 }) {
     return (
-        <section className="px-10 flex flex-col min-h-screen">
+        <section className="px-10 flex flex-col min-h-screen mx-auto max-w-screen-lg">
             <header className="flex justify-between">
                 <TestTitle id={params.testId} size="MEDIUM"></TestTitle>
                 <Timer></Timer>
