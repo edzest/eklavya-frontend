@@ -106,20 +106,24 @@ export default function QuestionForm({
                         )
                     }}
                 ></FormField>
-                <Button
-                    disabled={previousQuestionId === undefined ? true : false}
-                    className="absolute bottom-10 left-3"
-                    onClick={() => onPrevious()}
-                >
-                    Previous
-                </Button>
-                <Button
-                    disabled={nextQuestionId === undefined ? true : false}
-                    className="absolute bottom-10 right-3"
-                    type="submit"
-                >
-                    {nextQuestionId === undefined ? 'Submit' : 'Next'}
-                </Button>
+                <div className="flex justify-between">
+                    <Button
+                        disabled={
+                            previousQuestionId === undefined ? true : false
+                        }
+                        className="mt-12"
+                        onClick={() => onPrevious()}
+                    >
+                        Previous
+                    </Button>
+                    <Button
+                        disabled={nextQuestionId === undefined ? true : false}
+                        className="mt-12"
+                        type="submit"
+                    >
+                        {nextQuestionId === undefined ? 'Submit' : 'Next'}
+                    </Button>
+                </div>
             </form>
         </Form>
     )

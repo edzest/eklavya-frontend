@@ -16,7 +16,12 @@ export default async function Question({
             <QuestionForm
                 answerOptions={question.options}
                 questionTextRenderer={
-                    <TypographyP text={question.text}></TypographyP>
+                    <div>
+                        <TypographyP
+                            text={`Q.${params.questionId} `}
+                        ></TypographyP>
+                        <TypographyP text={question.text}></TypographyP>
+                    </div>
                 }
                 nextQuestionId={nextQuestionId}
                 previousQuestionId={previousQuestionId}
